@@ -76,6 +76,10 @@ contract Tracking {
             return;
         }
 
+        if (attestations[upcCode].length == 0) {
+            return;
+        }
+
         att memory a = att({
             attester: msg.sender,
             timestamp: block.timestamp
