@@ -25,6 +25,7 @@ contract Tracking {
     // Mapping from party ETH address to party details.
     // Party is either an intermediary or a manufacturer.
     mapping(address => partyDetails) partyProfiles;
+    mapping(address => bool) partyRegistered;
 
     // Setters
 
@@ -44,6 +45,7 @@ contract Tracking {
         });
 
         partyProfiles[msg.sender] = p;
+        partyRegistered[msg.sender] = true;
     }
 
     // Only callable by the manufacturer.
@@ -51,8 +53,7 @@ contract Tracking {
         string memory upcCode,
         string memory contentID
     ) public {
-        partyDetails memory prof = partyProfiles[msg.sender];
-        if (bytes(prof.partyID).length == 0) {
+        if (partyRegistered[msg.sender] == false) {
             return;
         }
 
@@ -71,6 +72,10 @@ contract Tracking {
     function attest(
         string memory upcCode
     ) public {
+        if (partyRegistered[msg.sender] == false) {
+            return;
+        }
+
         att memory a = att({
             attester: msg.sender,
             timestamp: block.timestamp
