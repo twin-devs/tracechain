@@ -1,5 +1,6 @@
-# <img src="logo.png" height="100" width="100" style='vertical-align:middle;'> <div style='vertical-align:middle; display:inline;'>Tracechain</div>
+# <img src="./traceui/public/logo.png" height="100" width="100" style='vertical-align:middle;'> <div style='vertical-align:middle; display:inline;'>Tracechain</div>
 
+Production deployment: https://tracechain.vercel.app/
 
 Tracechain is a decentralized platform designed to enhance supply chain transparency. It enables manufacturers, suppliers, and consumers to access and verify product information securely. This project aims to revolutionize Solidity compilation with a user-centric approach, providing a feature-rich suite that emphasizes accessibility, security, and performance.
 
@@ -10,8 +11,6 @@ Tracechain is a decentralized platform designed to enhance supply chain transpar
 - **Compatibility with Multiple Blockchain Networks**: The platform interfaces with various blockchain networks, including `Mantle`, `Celo`, `Zeta`, `Scroll Sepolia`, `Arbitrum`, `Base`, `Polygon zkEVM` and `OKX Testnet`.
 
 - **Lighthouse Storage using IPFS**: Secure and decentralized storage of product-related data is achieved through programmable storage using the [Lighthouse Storage SDK](https://www.lighthouse.storage/) with the [InterPlanetary File System (IPFS)](https://ipfs.tech/). This ensures an immutable and transparent supply chain history. The data is stored in an encrypted manner, involving the use of an encryption key by the data publisher.
-
-- **Waku for Decentralized Payload Delivery**: [Waku](https://docs.waku.org/) is utilized for sending payloads in a decentralized manner, enabling easy decryption. This ensures a seamless and interconnected environment for smart contract development and execution across multiple blockchain networks. 
 
 ## Deployment
 
