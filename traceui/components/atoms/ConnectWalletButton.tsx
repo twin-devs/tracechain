@@ -18,7 +18,6 @@ export const ConnectWalletButton: React.FC<{
 
   const login = async () => {
     await activate(metaMask);
-    process.env.CONTRACT_ADDRESS = chainIdToContracts[metaMask.provider.chainId];
   };
 
   const onMouseLeave = () => {

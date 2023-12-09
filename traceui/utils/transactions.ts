@@ -1,6 +1,7 @@
 import { Contract, ethers, providers } from "ethers";
 import { v4 as uuidv4 } from "uuid";
 import lighthouse from "@lighthouse-web3/sdk";
+import { chainIdToContracts } from "@constants/index";
 
 const contractAbi = [
   {
@@ -95,7 +96,7 @@ export const registerParty = async (
 ) => {
   const signer = provider.getSigner(0);
   const contract: Contract = new ethers.Contract(
-    process.env.CONTRACT_ADDRESS,
+    chainIdToContracts[provider.network.chainId],
     contractAbi,
     signer,
   );
@@ -116,7 +117,7 @@ export const registerItemOnChain = async (
 ) => {
   const signer = provider.getSigner();
   const contract: Contract = new ethers.Contract(
-    process.env.CONTRACT_ADDRESS,
+    chainIdToContracts[provider.network.chainId],
     contractAbi,
     signer,
   );
@@ -149,7 +150,7 @@ export const intermediaryAttestation = async (
   debugger;
   const signer = provider.getSigner();
   const contract: Contract = new ethers.Contract(
-    process.env.CONTRACT_ADDRESS,
+    chainIdToContracts[provider.network.chainId],
     contractAbi,
     signer,
   );
@@ -165,7 +166,7 @@ export const getTraceHistory = async (
 ) => {
   const signer = provider.getSigner();
   const contract: Contract = new ethers.Contract(
-    process.env.CONTRACT_ADDRESS,
+    chainIdToContracts[provider.network.chainId],
     contractAbi,
     signer,
   );
@@ -182,7 +183,7 @@ export const isPartyRegistered = async (
   debugger;
   const signer = provider.getSigner();
   const contract: Contract = new ethers.Contract(
-    process.env.CONTRACT_ADDRESS,
+    chainIdToContracts[provider.network.chainId],
     contractAbi,
     signer,
   );
@@ -197,7 +198,7 @@ export const getPartyDetails = async (
   ) => {
     const signer = provider.getSigner();
     const contract: Contract = new ethers.Contract(
-      process.env.CONTRACT_ADDRESS,
+      chainIdToContracts[provider.network.chainId],
       contractAbi,
       signer,
     );
