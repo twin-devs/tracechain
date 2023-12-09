@@ -1,6 +1,5 @@
-# Tracechain
+# <img src="logo.png" height="100" width="100" style='vertical-align:middle;'> <div style='vertical-align:middle; display:inline;'>Tracechain</div>
 
-<img src="logo.png">
 
 Tracechain is a decentralized platform designed to enhance supply chain transparency. It enables manufacturers, suppliers, and consumers to access and verify product information securely. This project aims to revolutionize Solidity compilation with a user-centric approach, providing a feature-rich suite that emphasizes accessibility, security, and performance.
 
@@ -24,7 +23,7 @@ Here is a table showcasing the deployments of `Tracechain` on various blockchain
 | [Celo Alfajores](https://docs.celo.org/network/alfajores)         | `0x88F5804fe2731abe4A94D08136E0445006748BA1` | [Celo Explorer](https://explorer.bitquery.io/celo_alfajores/smart_contract/0x88F5804fe2731abe4A94D08136E0445006748BA1)          |
 | [Zeta](https://www.zetachain.com/)                                | `0x7e64463DebD272F12AD61dc991808aB209841633` | [Zeta Explorer](https://explorer.zetachain.com/address/0x7e64463DebD272F12AD61dc991808aB209841633)          |
 | [Scroll Sepolia](https://scroll.io/)                              | `0x88F5804fe2731abe4A94D08136E0445006748BA1` | [Scroll Sepolia Explorer](https://sepolia.scrollscan.dev/address/0x88F5804fe2731abe4A94D08136E0445006748BA1)|
-| [Arbitrum Sepolia](https://arbitrum.io/)                          | `0x7e64463DebD272F12AD61dc991808aB209841633` | [Arbitrum Explorer](https://sepolia.arbiscan.io/address/0x7e64463DebD272F12AD61dc991808aB209841633)      |
+| [Arbitrum Sepolia](https://arbitrum.io/)                          | `0xeBB9868674Daa23A54e5235e950D78a733a00393` | [Arbitrum Explorer](https://sepolia.arbiscan.io/address/0x7e64463DebD272F12AD61dc991808aB209841633)      |
 | [Base](https://base.org/)                                         | `0x7e64463DebD272F12AD61dc991808aB209841633` | [Base Explorer](https://goerli.basescan.org/address/0x7e64463debd272f12ad61dc991808ab209841633)          |
 | [Polygon zkEVM Testnet](https://polygon.technology/polygon-zkevm) | `0xeBB9868674Daa23A54e5235e950D78a733a00393` | [Polygon zkEVM Testnet Explorer](https://testnet-zkevm.polygonscan.com/address/0xeBB9868674Daa23A54e5235e950D78a733a00393)|
 | [OKX X1 Testnet](https://www.okx.com/x1)                          | `0x7e64463DebD272F12AD61dc991808aB209841633` | [OKX X1 Testnet](https://www.oklink.com/x1-test/address/0x7e64463debd272f12ad61dc991808ab209841633)|
