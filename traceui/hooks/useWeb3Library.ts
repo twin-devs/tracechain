@@ -47,7 +47,7 @@ export default function useWeb3Library(): ExtendedWeb3ContextType {
 
   const activate = async (connector: MetaMask) =>
     connector
-      .activate(Number(connector.provider.chainId))
+      .activate(Number(context.chainId))
       .then(() => {
         window.localStorage.setItem(
           CONNECTOR_KEY,
