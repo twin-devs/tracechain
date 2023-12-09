@@ -103,4 +103,8 @@ contract Tracking {
     function getPartyDetails(address partyEthAddress) public view returns (partyDetails memory) {
         return partyProfiles[partyEthAddress];
     }
+
+    function isPartyRegistered(address partyEthAddress) public view returns (bool) {
+        return partyRegistered[partyEthAddress];
+    }
 }
