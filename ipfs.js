@@ -49,7 +49,7 @@ const registerItemOnchain = async (UPCCode, mfgDate, expDate, mfgAddress) => {
     // Store metadata of item on lighthouse storage
     const contentID = await lighthouse.uploadText(JSON.stringify(itemDetails), process.env.LIGHTHOUSE_API_KEY);
 
-    const tx = await track.connect(wallet).registerItem(UPCCode, contentID);
+    const tx = await track.connect(wallet).registerItem(UPCCode, contentID.data.Hash);
     await tx.wait();
 
     console.log("Item registered on chain", tx.hash);
