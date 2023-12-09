@@ -20,8 +20,7 @@ const Home: NextPage = () => {
       <Box
         as="main"
         css={{
-          minHeight: "100vh",
-          padding: "calc($2xl * 5) calc($3xl * 2)",
+          padding: "calc($lg * 5) calc($3xl * 2)",
           "@sm": {
             padding: "0 1rem",
           },

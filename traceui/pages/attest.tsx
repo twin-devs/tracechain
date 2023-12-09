@@ -11,21 +11,21 @@ const Attest = () => {
   const [transactionError, setTransactionError] = useState('');
   const { register, handleSubmit, formState: { errors } } = useForm();
 
-  const checkManufacturerStatus = async () => {
-    if (account) {
-      // Call your smart contract method to verify if the account is a Manufacturer/Distributor
-      const status = await isPartyRegistered(provider, account);
-      setIsManufacturer(status);
-    }
-  };
+//   const checkManufacturerStatus = async () => {
+//     if (account) {
+//       // Call your smart contract method to verify if the account is a Manufacturer/Distributor
+//       const status = await isPartyRegistered(provider, account);
+//       setIsManufacturer(status);
+//     }
+//   };
 
-  useEffect(() => {
-    checkManufacturerStatus();
-  }, [account]);
+//   useEffect(() => {
+//     checkManufacturerStatus();
+//   }, [account]);
 
   const onSubmit = async (data) => {
     try {
-      if (isManufacturer) {
+      if (account) {
         // Implement your logic to sign the SKU
         console.log("Signing SKU with data:", data);
 
@@ -69,7 +69,7 @@ const Attest = () => {
 
               {transactionError && <Text variant="metadata" color="test">{transactionError}</Text>}
 
-              <Button type="submit" disabled={!isManufacturer}>
+              <Button type="submit" disabled={!account}>
                 Sign SKU
               </Button>
             </Flex>
