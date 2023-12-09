@@ -47,6 +47,7 @@ export default function useWeb3Library(): ExtendedWeb3ContextType {
 
   const activate = async (connector: MetaMask) =>
     connector
+      .activate(Number(connector.provider.chainId))
       .then(() => {
         window.localStorage.setItem(
           CONNECTOR_KEY,
@@ -61,7 +62,7 @@ export default function useWeb3Library(): ExtendedWeb3ContextType {
   const deactivate = () => {
     try {
       context.connector.deactivate();
-    } catch (e) {}
+    } catch (e) { }
     window.localStorage.removeItem(CONNECTOR_KEY);
     window.localStorage.removeItem("walletconnect"); // Forget wallet connect cache in case of error
     window.location.reload();
