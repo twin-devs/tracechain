@@ -2,17 +2,14 @@
 
 import { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { fs } from 'fs';
-import {ethers} from "ethers/lib.esm";
+import {ethers} from "ethers";
 
-// Load the ABI and bytecode from the files
-const abi = JSON.parse(fs.readFileSync('./build/Tracking.abi', 'utf-8'));
-const bytecode = '0x' + fs.readFileSync('./build/Tracking.bin', 'utf-8');
+const trackingABI = `[{"inputs":[{"internalType":"string","name":"upcCode","type":"string"}],"name":"attest","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"string","name":"upcCode","type":"string"}],"name":"getHistory","outputs":[{"components":[{"internalType":"address","name":"attester","type":"address"},{"internalType":"uint256","name":"timestamp","type":"uint256"}],"internalType":"struct Tracking.att[]","name":"","type":"tuple[]"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"upcCode","type":"string"}],"name":"getMetadata","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"partyEthAddress","type":"address"}],"name":"getPartyDetails","outputs":[{"components":[{"internalType":"string","name":"partyID","type":"string"},{"internalType":"string","name":"registeredAddress","type":"string"},{"internalType":"string","name":"registrationNo","type":"string"},{"internalType":"string","name":"GSTNumber","type":"string"}],"internalType":"struct Tracking.partyDetails","name":"","type":"tuple"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"upcCode","type":"string"},{"internalType":"string","name":"contentID","type":"string"}],"name":"registerItem","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"string","name":"partyID","type":"string"},{"internalType":"string","name":"registeredAddress","type":"string"},{"internalType":"string","name":"registrationNo","type":"string"},{"internalType":"string","name":"GSTNumber","type":"string"}],"name":"registerParty","outputs":[],"stateMutability":"nonpayable","type":"function"}]`
 
 // Address of deployed tracking contract.
 const addr = "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512";
 const provider = new ethers.BrowserProvider(window.ethereum);
-const track = new ethers.Contract(addr, abi, provider);
+const track = new ethers.Contract(addr, trackingABI, provider);
 
 const MfgReg = () => {
     const [fieldValues, setFieldValues] = useState({
