@@ -18,16 +18,15 @@ Here is a table showcasing the deployments of Tracechain on various blockchain n
 
 | Blockchain Network         | Contract Address                  | Explorer Link                               |
 | --------------------------- | --------------------------------- | --------------------------------------------|
-| Mantle                      | `0x1234567890abcdef1234567890abcde` | [Mantle Explorer](link-to-explorer)        |
-| Celo                        | `0xabcdef1234567890abcdef123456789` | [Celo Explorer](link-to-explorer)          |
-| Zeta                        | `0x7890abcdef1234567890abcdef12345` | [Zeta Explorer](link-to-explorer)          |
+| Mantle                      | `0x7e64463DebD272F12AD61dc991808aB209841633` | [Mantle Explorer](https://explorer.testnet.mantle.xyz/address/0x7e64463DebD272F12AD61dc991808aB209841633)        |
+| Celo Alfajores              | `0x88F5804fe2731abe4A94D08136E0445006748BA1` | [Celo Explorer](https://explorer.bitquery.io/celo_alfajores/smart_contract/0x88F5804fe2731abe4A94D08136E0445006748BA1)          |
+| Zeta                        | `0x7e64463DebD272F12AD61dc991808aB209841633` | [Zeta Explorer](https://explorer.zetachain.com/address/0x7e64463DebD272F12AD61dc991808aB209841633)          |
 | Scroll Sepolia              | `0x88F5804fe2731abe4A94D08136E0445006748BA1` | [Scroll Sepolia Explorer](https://sepolia.scrollscan.dev/address/0x88F5804fe2731abe4A94D08136E0445006748BA1)|
-| Arbitrum                    | `0xcdef1234567890abcdef1234567890a` | [Arbitrum Explorer](link-to-explorer)      |
-| Base                        | `0x567890abcdef1234567890abcdef12` | [Base Explorer](link-to-explorer)          |
+| Arbitrum Sepolia            | `0x7e64463DebD272F12AD61dc991808aB209841633` | [Arbitrum Explorer](https://sepolia.arbiscan.io/address/0x7e64463DebD272F12AD61dc991808aB209841633)      |
+| Base                        | `0x7e64463DebD272F12AD61dc991808aB209841633` | [Base Explorer](https://goerli.basescan.org/address/0x7e64463debd272f12ad61dc991808ab209841633)          |
 | polygon zkEVM Testnet       | `0xeBB9868674Daa23A54e5235e950D78a733a00393` | [Polygon zkEVM Testnet Explorer](https://testnet-zkevm.polygonscan.com/address/0xeBB9868674Daa23A54e5235e950D78a733a00393)|
-| OKX-1Chain       | `0x90abcdef1234567890abcdef123456` | [Polygon zkEVM Testnet Explorer](link-to-explorer)|
+| OKX X1 Testnet              | `0x7e64463DebD272F12AD61dc991808aB209841633` | [OKX X1 Testnet](https://www.oklink.com/x1-test/address/0x7e64463debd272f12ad61dc991808ab209841633)|
 
-**Note**: Replace the placeholder contract addresses and explorer links with the actual deployment details.
 
 ## Getting Started
 
@@ -60,3 +59,4 @@ To get started with Tracechain, follow the steps below:
 
 1. [Abhishek Kumar](https://github.com/twin-devs/tracechain/commits?author=xenowits)
 2. [Dhruv Bodani](https://github.com/dB2510)
+3. [Nishtha Bodani](https://github.com/nb9960)
