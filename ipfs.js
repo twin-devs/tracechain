@@ -1,9 +1,11 @@
 import lighthouse from '@lighthouse-web3/sdk';
+import kavach from '@lighthouse-web3/kavach';
 import dotenv from 'dotenv';
 import fetch from 'node-fetch';
 import { ethers, JsonRpcProvider } from "ethers";
 import fs from 'fs';
 import { v4 as uuidv4 } from 'uuid';
+import { ethers } from 'ethers';
 
 dotenv.config();
 
@@ -94,8 +96,16 @@ const traceHistory = async (UPCCode) => {
     return attestations;
 }
 
-// Download content from lighthouse storage.
-export const downloadFile = (cid, path) => {
+// Returns a JWT to be used for encrypted storage for files.
+const signAuthMessage = async () => {
+    const authMessage = await kavach.getAuthMessage(wallet.address)
+    const signedMessage = await wallet.signMessage(authMessage.message)
+    const { JWT, error } = await kavach.getJWT(wallet.address, signedMessage)
+    return (JWT)
+}
+
+// Retrieve content for the given content id.
+export const retrievePayload = (cid, path) => {
     fetch(`https://gateway.lighthouse.storage/ipfs/${cid}`)
         .then(response => {
             if (response.ok) {
@@ -113,3 +123,33 @@ export const downloadFile = (cid, path) => {
             console.error('Failed to save the file:', error);
         });
 };
+
+// Uploads encrypted payload with the given data.
+export const uploadEncryptedPayload = async (data) => {
+    const signedMessage = await signAuthMessage();
+    const response = await lighthouse.textUploadEncrypted(JSON.stringify(data), process.env.LIGHTHOUSE_API_KEY, wallet.address, signedMessage);
+    return response.data.Hash
+}
+
+// Retrieves encrypted payload for the given content id.
+export const retrieveEncryptedPayload = async (cid) => {
+    const signedMessage = await signAuthMessage();
+    try {
+        const fileEncryptionKey = await lighthouse.fetchEncryptionKey(
+            cid,
+            wallet.address,
+            signedMessage
+        )
+
+        // Decrypt Payload
+        const decrypted = await lighthouse.decryptFile(
+            cid,
+            fileEncryptionKey.data.key
+        )
+
+        // Save Payload
+        fs.createWriteStream("out.json").write(Buffer.from(decrypted))
+    } catch (err) {
+        console.log("error retrieving: ", err)
+    }
+}
