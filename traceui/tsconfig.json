@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "resolveJsonModule": true,
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["components/*"],
+      "@constants/*": ["constants/*"],
+      "@hooks/*": ["hooks/*"],
+      "@lib/*": ["lib/*"],
+      "@utils/*": ["utils/*"],
+      "@public/*": ["public/*"],
+      "@api/*": ["api/*"],
+      "@types/*": ["types/*"],
+      "@/": ["."]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "constants/abis/depositContract.ts",
+    "scripts/generate-ff-table.js"
+  ],
+  "exclude": ["node_modules"]
+}
