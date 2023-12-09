@@ -8,7 +8,7 @@ Tracechain is a decentralized platform designed to enhance supply chain transpar
 
 - **Compatibility with Multiple Blockchain Networks**: The platform interfaces with various blockchain networks, including Mantle, Celo, Zeta, Scroll Sepolia, Arbitrum, Base, polygon zkEVM and OKX Testnet.
 
-- **Lighthouse Storage using IPFS**: Secure and decentralized storage of product-related data is achieved through Lighthouse storage using the InterPlanetary File System (IPFS). This ensures an immutable and transparent supply chain history.
+- **Lighthouse Storage using IPFS**: Secure and decentralized storage of product-related data is achieved through programmable storage using the Lighthouse Storage SDK with the InterPlanetary File System (IPFS). This ensures an immutable and transparent supply chain history. The data is stored in an encrypted manner, involving the use of an encryption key by the data publisher.
 
 - **Waku for Decentralized Payload Delivery**: Waku is utilized for sending payloads in a decentralized manner, enabling easy decryption. This ensures a seamless and interconnected environment for smart contract development and execution across multiple blockchain networks. 
 
