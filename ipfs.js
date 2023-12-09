@@ -99,7 +99,7 @@ const traceHistory = async (UPCCode) => {
 // Returns a JWT to be used for encrypted storage for files.
 const signAuthMessage = async () => {
     const authMessage = await kavach.getAuthMessage(wallet.address)
-    const signedMessage = await signer.signMessage(authMessage.message)
+    const signedMessage = await wallet.signMessage(authMessage.message)
     const { JWT, error } = await kavach.getJWT(wallet.address, signedMessage)
     return (JWT)
 }
