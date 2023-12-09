@@ -2,7 +2,6 @@ import { Button } from "@obolnetwork/obol-ui";
 import { useState } from "react";
 import { metaMask } from "../../connectors";
 import { ellipseAddress } from "../../utils/eth";
-import { useRouter } from "next/router";
 import useEagerConnect from "@hooks/useEagerConnect";
 import { useInactiveListener } from "@hooks/useInactiveListener";
 import useWeb3Library from "@hooks/useWeb3Library";
@@ -10,7 +9,6 @@ import useWeb3Library from "@hooks/useWeb3Library";
 export const ConnectWalletButton: React.FC<{
   fullWidthFlag?: boolean;
 }> = ({ fullWidthFlag = false }) => {
-  const router = useRouter();
   const { account, isConnected, activate, deactivate } = useWeb3Library();
   const [showDisconnect, setShowDisconnect] = useState(false);
 

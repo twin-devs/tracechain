@@ -2,7 +2,7 @@ import { useWeb3React, Web3ContextType } from "@web3-react/core";
 import { Web3Provider } from "@ethersproject/providers";
 import { MetaMask } from "@web3-react/metamask";
 import { Connector } from "@web3-react/types";
-import { DEFAULT_NETWORK, CONNECTOR_KEY, NETWORK } from "../constants";
+import { CONNECTOR_KEY, NETWORK } from "../constants";
 
 export enum ConnectorType {
   MetaMask = "metamask",
@@ -34,21 +34,20 @@ export default function useWeb3Library(): ExtendedWeb3ContextType {
   }
 
   const connectorName = getConnectorName(context.connector);
-  const networkName = getNetworkName(context.chainId || DEFAULT_NETWORK);
+  const networkName = getNetworkName(context.chainId);
 
   const isConnected =
     account &&
     context.isActive &&
-    context.provider &&
-    context.chainId === DEFAULT_NETWORK;
+    context.provider;
 
-  if (context.isActive && context.chainId !== DEFAULT_NETWORK) {
+  if (context.isActive) {
     window.localStorage.removeItem(CONNECTOR_KEY);
   }
 
   const activate = async (connector: MetaMask) =>
     connector
-      .activate(DEFAULT_NETWORK)
+      .activate(Number(context.chainId))
       .then(() => {
         window.localStorage.setItem(
           CONNECTOR_KEY,
@@ -63,7 +62,7 @@ export default function useWeb3Library(): ExtendedWeb3ContextType {
   const deactivate = () => {
     try {
       context.connector.deactivate();
-    } catch (e) {}
+    } catch (e) { }
     window.localStorage.removeItem(CONNECTOR_KEY);
     window.localStorage.removeItem("walletconnect"); // Forget wallet connect cache in case of error
     window.location.reload();
