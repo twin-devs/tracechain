@@ -34,15 +34,14 @@ export default function useWeb3Library(): ExtendedWeb3ContextType {
   }
 
   const connectorName = getConnectorName(context.connector);
-  const networkName = getNetworkName(context.chainId || DEFAULT_NETWORK);
+  const networkName = getNetworkName(context.chainId);
 
   const isConnected =
     account &&
     context.isActive &&
-    context.provider &&
-    context.chainId === DEFAULT_NETWORK;
+    context.provider;
 
-  if (context.isActive && context.chainId !== DEFAULT_NETWORK) {
+  if (context.isActive) {
     window.localStorage.removeItem(CONNECTOR_KEY);
   }
 

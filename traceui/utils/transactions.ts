@@ -1,7 +1,7 @@
-import { CONTRACT_SEPOLIA_ARBITRUM_TESTNET } from "@constants/index";
 import { Contract, ethers, providers } from "ethers";
 import { v4 as uuidv4 } from "uuid";
 import lighthouse from "@lighthouse-web3/sdk";
+
 const contractAbi = [
   {
     inputs: [{ internalType: "string", name: "upcCode", type: "string" }],
@@ -95,7 +95,7 @@ export const registerParty = async (
 ) => {
   const signer = provider.getSigner(0);
   const contract: Contract = new ethers.Contract(
-    CONTRACT_SEPOLIA_ARBITRUM_TESTNET,
+    process.env.CONTRACT_ADDRESS,
     contractAbi,
     signer,
   );
@@ -116,7 +116,7 @@ export const registerItemOnChain = async (
 ) => {
   const signer = provider.getSigner();
   const contract: Contract = new ethers.Contract(
-    CONTRACT_SEPOLIA_ARBITRUM_TESTNET,
+    process.env.CONTRACT_ADDRESS,
     contractAbi,
     signer,
   );
@@ -149,7 +149,7 @@ export const intermediaryAttestation = async (
   debugger;
   const signer = provider.getSigner();
   const contract: Contract = new ethers.Contract(
-    CONTRACT_SEPOLIA_ARBITRUM_TESTNET,
+    process.env.CONTRACT_ADDRESS,
     contractAbi,
     signer,
   );
@@ -165,7 +165,7 @@ export const getTraceHistory = async (
 ) => {
   const signer = provider.getSigner();
   const contract: Contract = new ethers.Contract(
-    CONTRACT_SEPOLIA_ARBITRUM_TESTNET,
+    process.env.CONTRACT_ADDRESS,
     contractAbi,
     signer,
   );
@@ -182,7 +182,7 @@ export const isPartyRegistered = async (
   debugger;
   const signer = provider.getSigner();
   const contract: Contract = new ethers.Contract(
-    CONTRACT_SEPOLIA_ARBITRUM_TESTNET,
+    process.env.CONTRACT_ADDRESS,
     contractAbi,
     signer,
   );
@@ -197,7 +197,7 @@ export const getPartyDetails = async (
   ) => {
     const signer = provider.getSigner();
     const contract: Contract = new ethers.Contract(
-      CONTRACT_SEPOLIA_ARBITRUM_TESTNET,
+      process.env.CONTRACT_ADDRESS,
       contractAbi,
       signer,
     );

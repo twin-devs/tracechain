@@ -9,8 +9,6 @@ import Layout from "../components/templates/layout";
 
 const connectors: [MetaMask, Web3ReactHooks][] = [[metaMask, metaMaskHooks]];
 
-import TopLeftBg from "../public/backgrounds/top-left-bg.svg";
-
 
 import { DEFAULT_NETWORK_NAME } from "../constants";
 import { useHasMounted } from "@hooks/index";
