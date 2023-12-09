@@ -17,15 +17,15 @@ Tracechain is a decentralized platform designed to enhance supply chain transpar
 Here is a table showcasing the deployments of `Tracechain` on various blockchain networks:
 
 | Blockchain Network                                                | Contract Address                  | Explorer Link                               |
-|-------------------------------------------------------------------| --------------------------------- | --------------------------------------------|
-| [Mantle](https://www.mantle.xyz/)                                 | `0x7e64463DebD272F12AD61dc991808aB209841633` | [Mantle Explorer](https://explorer.testnet.mantle.xyz/address/0x7e64463DebD272F12AD61dc991808aB209841633)        |
-| [Celo Alfajores](https://docs.celo.org/network/alfajores)         | `0x88F5804fe2731abe4A94D08136E0445006748BA1` | [Celo Explorer](https://explorer.bitquery.io/celo_alfajores/smart_contract/0x88F5804fe2731abe4A94D08136E0445006748BA1)          |
-| [Zeta](https://www.zetachain.com/)                                | `0x7e64463DebD272F12AD61dc991808aB209841633` | [Zeta Explorer](https://explorer.zetachain.com/address/0x7e64463DebD272F12AD61dc991808aB209841633)          |
-| [Scroll Sepolia](https://scroll.io/)                              | `0x88F5804fe2731abe4A94D08136E0445006748BA1` | [Scroll Sepolia Explorer](https://sepolia.scrollscan.dev/address/0x88F5804fe2731abe4A94D08136E0445006748BA1)|
-| [Arbitrum Sepolia](https://arbitrum.io/)                          | `0xeBB9868674Daa23A54e5235e950D78a733a00393` | [Arbitrum Explorer](https://sepolia.arbiscan.io/address/0x7e64463DebD272F12AD61dc991808aB209841633)      |
-| [Base](https://base.org/)                                         | `0x7e64463DebD272F12AD61dc991808aB209841633` | [Base Explorer](https://goerli.basescan.org/address/0x7e64463debd272f12ad61dc991808ab209841633)          |
-| [Polygon zkEVM Testnet](https://polygon.technology/polygon-zkevm) | `0xeBB9868674Daa23A54e5235e950D78a733a00393` | [Polygon zkEVM Testnet Explorer](https://testnet-zkevm.polygonscan.com/address/0xeBB9868674Daa23A54e5235e950D78a733a00393)|
-| [OKX X1 Testnet](https://www.okx.com/x1)                          | `0x7e64463DebD272F12AD61dc991808aB209841633` | [OKX X1 Testnet](https://www.oklink.com/x1-test/address/0x7e64463debd272f12ad61dc991808ab209841633)|
+|-------------------------------------------------------------------| --------------------------------- | --------------------------------------------| 
+| [Mantle](https://www.mantle.xyz/)                                 | `0xeBB9868674Daa23A54e5235e950D78a733a00393` | [Mantle Explorer](https://explorer.testnet.mantle.xyz/address/0xeBB9868674Daa23A54e5235e950D78a733a00393)        |
+| [Celo Alfajores](https://docs.celo.org/network/alfajores)         | `0xb9652c6565C66C80b5C3385f0243f07805bdB38E` | [Celo Explorer](https://explorer.bitquery.io/celo_alfajores/smart_contract/0xb9652c6565C66C80b5C3385f0243f07805bdB38E)          |
+| [Zeta](https://www.zetachain.com/)                                | `0xeBB9868674Daa23A54e5235e950D78a733a00393` | [Zeta Explorer](https://explorer.zetachain.com/address/0xeBB9868674Daa23A54e5235e950D78a733a00393)          |
+| [Scroll Sepolia](https://scroll.io/)                              | `0x6b77c6DDE0b1b04b8859071D42621C7690a062E9` | [Scroll Sepolia Explorer](https://sepolia.scrollscan.dev/address/0x6b77c6DDE0b1b04b8859071D42621C7690a062E9)|
+| [Arbitrum Sepolia](https://arbitrum.io/)                          | `0xeBB9868674Daa23A54e5235e950D78a733a00393` | [Arbitrum Explorer](https://sepolia.arbiscan.io/address/0xeBB9868674Daa23A54e5235e950D78a733a00393)      |
+| [Base](https://base.org/)                                         | `0xeBB9868674Daa23A54e5235e950D78a733a00393` | [Base Explorer](https://goerli.basescan.org/address/0xeBB9868674Daa23A54e5235e950D78a733a00393)          |
+| [Polygon zkEVM Testnet](https://polygon.technology/polygon-zkevm) | `0x1d0bDCa77D8341De8D4da4926274cb42B21a1586` | [Polygon zkEVM Testnet Explorer](https://testnet-zkevm.polygonscan.com/address/0x1d0bDCa77D8341De8D4da4926274cb42B21a1586)|
+| [OKX X1 Testnet](https://www.okx.com/x1)                          | `0xeBB9868674Daa23A54e5235e950D78a733a00393` | [OKX X1 Testnet](https://www.oklink.com/x1-test/address/0xeBB9868674Daa23A54e5235e950D78a733a00393)|
 
 
 ## Getting Started
