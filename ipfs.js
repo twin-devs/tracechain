@@ -127,7 +127,7 @@ export const retrievePayload = (cid, path) => {
 // Uploads encrypted payload with the given data.
 export const uploadEncryptedPayload = async (data) => {
     const signedMessage = await signAuthMessage();
-    const response = await lighthouse.textUploadEncrypted(JSON.stringify(data), process.env.LIGHTHOUSE_API_KEY, publicKey, signedMessage);
+    const response = await lighthouse.textUploadEncrypted(JSON.stringify(data), process.env.LIGHTHOUSE_API_KEY, wallet.address, signedMessage);
     return response.data.Hash
 }
 
