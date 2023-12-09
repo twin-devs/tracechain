@@ -2,8 +2,6 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import { Box } from "@obolnetwork/obol-ui";
 import { DEFAULT_NETWORK_NAME } from "../constants";
-import { SelectForm } from "@components/organisms/select-form";
-
 const Home: NextPage = () => {
   const networkName = DEFAULT_NETWORK_NAME.toLocaleLowerCase();
   return (
@@ -33,7 +31,6 @@ const Home: NextPage = () => {
           mb: "$4xl",
         }}
       >
-      <SelectForm />
       </Box>
     </div>
   );
