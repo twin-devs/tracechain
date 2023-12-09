@@ -2,7 +2,7 @@ import { useWeb3React, Web3ContextType } from "@web3-react/core";
 import { Web3Provider } from "@ethersproject/providers";
 import { MetaMask } from "@web3-react/metamask";
 import { Connector } from "@web3-react/types";
-import { DEFAULT_NETWORK, CONNECTOR_KEY, NETWORK } from "../constants";
+import { CONNECTOR_KEY, NETWORK } from "../constants";
 
 export enum ConnectorType {
   MetaMask = "metamask",
@@ -47,7 +47,6 @@ export default function useWeb3Library(): ExtendedWeb3ContextType {
 
   const activate = async (connector: MetaMask) =>
     connector
-      .activate(DEFAULT_NETWORK)
       .then(() => {
         window.localStorage.setItem(
           CONNECTOR_KEY,

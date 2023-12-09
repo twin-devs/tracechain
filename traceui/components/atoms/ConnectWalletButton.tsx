@@ -5,7 +5,6 @@ import { ellipseAddress } from "../../utils/eth";
 import useEagerConnect from "@hooks/useEagerConnect";
 import { useInactiveListener } from "@hooks/useInactiveListener";
 import useWeb3Library from "@hooks/useWeb3Library";
-import { chainIdToContracts } from "@constants/index";
 
 export const ConnectWalletButton: React.FC<{
   fullWidthFlag?: boolean;
