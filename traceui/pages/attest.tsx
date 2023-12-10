@@ -18,6 +18,7 @@ import EtherscanLink from "@components/atoms/EtherscanLink";
 
 const Attest = () => {
     const { account, provider } = useWeb3Library();
+    const chainId = provider.network.chainId;
     const [isManufacturer, setIsManufacturer] = useState(false);
     const [transactionError, setTransactionError] = useState("");
     const {
@@ -97,7 +98,7 @@ const Attest = () => {
                                 <Button type="submit" disabled={!account}>
                                     Sign SKU
                                 </Button>
-                                {txHashResponse && <EtherscanLink txHash={txHashResponse} />}
+                                {txHashResponse && <EtherscanLink txHash={txHashResponse} chainId={chainId} />}
                             </Flex>
                         </form>
                     </>
