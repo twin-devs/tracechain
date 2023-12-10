@@ -61,12 +61,12 @@ export const ToggleOptions: React.FC<{
                 <ToggleCardItem
                     id="register-manufacturer"
                     value="/manufacturer-registration"
-                    aria-label="Register as Manufacturer"
+                    aria-label="Register as party"
                 >
                     <Card
                         toggle
                         image={<Logo src="/manufactura.png" alt="manufacturer" />}
-                        heading="Register as Manufacturer"
+                        heading="Register as Party"
                     />
                 </ToggleCardItem>
                 <ToggleCardItem
