@@ -1,6 +1,7 @@
 import { Contract, ethers, providers } from "ethers";
 import { v4 as uuidv4 } from "uuid";
 import lighthouse from "@lighthouse-web3/sdk";
+import kavach from '@lighthouse-web3/kavach';
 import { chainIdToContracts } from "@constants/index";
 
 const contractAbi = [
@@ -129,11 +130,14 @@ export const registerItemOnChain = async (
     mfgAddress: itemData.manufacturingAddress,
   };
 
-  debugger;
-  // Store metadata of item on lighthouse storage
-  const contentID = await lighthouse.uploadText(
+  // Store metadata of item on lighthouse storage in an encrypted manner.
+  const address = await signer.getAddress();
+  const signedMessage = await signAuthMessage(signer); // This will popup metamask to sign auth message.
+  const contentID = await lighthouse.textUploadEncrypted(
     JSON.stringify(itemDetails),
     process.env.NEXT_PUBLIC_LIGHTHOUSE_API_KEY,
+    address,
+    signedMessage
   );
 
   console.log(contentID);
@@ -193,16 +197,24 @@ export const isPartyRegistered = async (
 };
 
 export const getPartyDetails = async (
-    provider: providers.Web3Provider,
-    account: string,
-  ) => {
-    const signer = provider.getSigner();
-    const contract: Contract = new ethers.Contract(
-      chainIdToContracts[provider.network.chainId],
-      contractAbi,
-      signer,
-    );
-  
-    const tx = await contract.getPartyDetails(account);
-    return tx;
-  };
+  provider: providers.Web3Provider,
+  account: string,
+) => {
+  const signer = provider.getSigner();
+  const contract: Contract = new ethers.Contract(
+    chainIdToContracts[provider.network.chainId],
+    contractAbi,
+    signer,
+  );
+
+  const tx = await contract.getPartyDetails(account);
+  return tx;
+};
+
+const signAuthMessage = async (signer: providers.JsonRpcSigner) => {
+  const address = await signer.getAddress();
+  const authMessage = await kavach.getAuthMessage(address);
+  const signedMessage = await signer.signMessage(authMessage.message);
+  const { JWT, error } = await kavach.getJWT(address, signedMessage);
+  return (JWT);
+}

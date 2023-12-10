@@ -21,6 +21,7 @@ const ItemRegistration = () => {
 
   const [txHashResponse, setTxHashResponse] = useState("");
   const { account, provider } = useWeb3Library();
+  const chainId = provider.network.chainId;
 
   const onSubmit = async (data) => {
     try {
@@ -104,7 +105,7 @@ const ItemRegistration = () => {
               <Button type="submit" disabled={!account}>
                 Register Item
               </Button>
-              {txHashResponse && <EtherscanLink txHash={txHashResponse} />}
+              {txHashResponse && <EtherscanLink txHash={txHashResponse} chainId={chainId} />}
             </Flex>
           </form>
         </Container>
