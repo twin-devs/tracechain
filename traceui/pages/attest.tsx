@@ -71,39 +71,36 @@ const Attest = () => {
         >
             <Container>
                 {account ? (
-                    <form onSubmit={handleSubmit(onSubmit)}>
-                        <Flex direction="column" css={{ gap: "$2xl" }}>
-                            <Text variant="h3">
-                                {isManufacturer
-                                    ? "Manufacturer/Distributor"
-                                    : "Not a Manufacturer/Distributor"}
-                            </Text>
+                    <>
+                        <Text variant="h3">Attest</Text>
+                        <form style={{ width: "100%" }} onSubmit={handleSubmit(onSubmit)}>
+                            <Flex direction="column" css={{ gap: "$2xl" }}>
+                                <Flex direction="column" css={{ gap: "$xxs" }}>
+                                    <Text>SKU Code</Text>
+                                    <TextField
+                                        id="skuCode"
+                                        {...register("skuCode", { required: true })}
+                                    />
+                                    {errors.skuCode && (
+                                        <Text variant="metadata" color="test">
+                                            SKU Code is required
+                                        </Text>
+                                    )}
+                                </Flex>
 
-                            <Flex direction="column" css={{ gap: "$xxs" }}>
-                                <Text>SKU Code</Text>
-                                <TextField
-                                    id="skuCode"
-                                    {...register("skuCode", { required: true })}
-                                />
-                                {errors.skuCode && (
+                                {transactionError && (
                                     <Text variant="metadata" color="test">
-                                        SKU Code is required
+                                        {transactionError}
                                     </Text>
                                 )}
+
+                                <Button type="submit" disabled={!account}>
+                                    Sign SKU
+                                </Button>
+                                {txHashResponse && <EtherscanLink txHash={txHashResponse} />}
                             </Flex>
-
-                            {transactionError && (
-                                <Text variant="metadata" color="test">
-                                    {transactionError}
-                                </Text>
-                            )}
-
-                            <Button type="submit" disabled={!account}>
-                                Sign SKU
-                            </Button>
-                            {txHashResponse && <EtherscanLink txHash={txHashResponse} />}
-                        </Flex>
-                    </form>
+                        </form>
+                    </>
                 ) : (
                     <ConnectWalletButton />
                 )}
