@@ -102,6 +102,19 @@ const ItemRegistration = () => {
                 )}
               </Flex>
 
+              <Flex direction="column" css={{ gap: "$xxs" }}>
+                <Text>Addresses of Parties Involved</Text>
+                <TextField
+                    id="partiesInvolved"
+                    {...register("partiesInvolved", { required: true })}
+                />
+                {errors.partiesInvolved && (
+                    <Text variant="metadata" color="test">
+                      This field is required
+                    </Text>
+                )}
+              </Flex>
+
               <Button type="submit" disabled={!account}>
                 Register Item
               </Button>

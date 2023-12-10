@@ -142,6 +142,12 @@ export const registerItemOnChain = async (
 
   console.log(contentID);
 
+  // Share content with other parties involved.
+  const partyAddressesCombined: string = itemData.partiesInvolved;
+  const partyAddresses: string[] = partyAddressesCombined.split(",")
+  const shareResponse = await lighthouse.shareFile(address, partyAddresses, contentID.data.Hash, signedMessage)
+  console.log(shareResponse);
+
   const tx = await contract.registerItem(itemData.skuCode, contentID.data.Hash);
   return tx;
 };
@@ -179,6 +185,22 @@ export const getTraceHistory = async (
   return tx;
 };
 
+// Function to get the metadata of an item
+export const getMetadata = async (
+  provider: providers.Web3Provider,
+  itemId: string,
+) => {
+  const signer = provider.getSigner();
+  const contract: Contract = new ethers.Contract(
+    chainIdToContracts[provider.network.chainId],
+    contractAbi,
+    signer,
+  );
+
+  const tx = await contract.getMetadata(itemId);
+  return tx;
+};
+
 // Function to check if a party is registered
 export const isPartyRegistered = async (
   provider: providers.Web3Provider,
@@ -211,10 +233,32 @@ export const getPartyDetails = async (
   return tx;
 };
 
-const signAuthMessage = async (signer: providers.JsonRpcSigner) => {
+export const signAuthMessage = async (signer: providers.JsonRpcSigner) => {
   const address = await signer.getAddress();
   const authMessage = await kavach.getAuthMessage(address);
   const signedMessage = await signer.signMessage(authMessage.message);
   const { JWT, error } = await kavach.getJWT(address, signedMessage);
   return (JWT);
+}
+
+export const retrieveEncryptedPayload = async (cid: string, signer: providers.JsonRpcSigner) => {
+  const signedMessage = await signAuthMessage(signer);
+  const address = await signer.getAddress();
+  try {
+      const fileEncryptionKey = await lighthouse.fetchEncryptionKey(
+          cid,
+          address,
+          signedMessage
+      )
+
+      // Decrypt Payload
+      const decrypted = await lighthouse.decryptFile(
+          cid,
+          fileEncryptionKey.data.key,
+          "json"
+      )
+
+  } catch (err) {
+      console.log("error retrieving: ", err)
+  }
 }
