@@ -45,7 +45,7 @@ const ManufacturerRegistration = () => {
           }}
       >
         <Container>
-          <Text variant="h3">Manufacturer Registration</Text>
+          <Text variant="h3">Party Registration</Text>
           <form style={{ width: "100%" }} onSubmit={handleSubmit(onSubmit)}>
             <Flex direction="column" css={{ gap: "$2xl" }}>
               <Flex direction="column" css={{ gap: "$xxs" }}>
