@@ -12,6 +12,8 @@ Tracechain is a decentralized platform designed to enhance supply chain transpar
 
 - **Lighthouse Storage using IPFS**: Secure and decentralized storage of product-related data is achieved through programmable storage using the [Lighthouse Storage SDK](https://www.lighthouse.storage/) with the [InterPlanetary File System (IPFS)](https://ipfs.tech/). This ensures an immutable and transparent supply chain history. The data is stored in an encrypted manner, involving the use of an encryption key by the data publisher.
 
+- **Participant collectibles**: Supply chain participants can also interact in the [monaverse](https://monaverse.com/) & share collectibles.
+
 ## Deployment
 
 Here is a table showcasing the deployments of `Tracechain` on various blockchain networks:

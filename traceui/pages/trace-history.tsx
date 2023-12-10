@@ -14,6 +14,7 @@ import {
 import useWeb3Library from "@hooks/useWeb3Library";
 import { getTraceHistory, getPartyDetails } from "../utils/transactions";
 import { BigNumber } from "ethers";
+import axios from "axios";
 
 const BignumberToDate = (bignumber) => {
   const bigNumberTimestamp = BigNumber.from(bignumber);
@@ -25,10 +26,13 @@ const BignumberToDate = (bignumber) => {
   const date = new Date(timestampInMilliseconds).toLocaleDateString();
   return date;
 };
+
 const TraceHistory = () => {
   const { account, provider } = useWeb3Library();
   const [traceHistory, setTraceHistory] = useState<RowDef<any>[]>([]);
+  const [partyCollectibles, setPartyCollectibles] = useState<RowDef<any>[]>([]);
   const [transactionError, setTransactionError] = useState("");
+
   const {
     register,
     handleSubmit,
@@ -75,6 +79,25 @@ const TraceHistory = () => {
     }
   };
 
+  const onSubmit2 = async (data) => {
+    const x = await axios.get("https://api.hackathon.monaverse.com/collectibles");
+    console.log("x", x.data.data);
+
+    let collectibles = [];
+    for (let i = 0; i < x.data.totalCount; i++) {
+      const collect = {
+        artist: x.data.data[i].artist,
+        title: x.data.data[i].title,
+        creator: x.data.data[i].creator,
+        imageURL: x.data.data[i].image
+      };
+
+      collectibles.push(collect);
+    }
+
+    setPartyCollectibles(collectibles);
+  }
+
   const columns: ColumnDef<any>[] = [
     {
       accessorKey: "partyID",
@@ -87,52 +110,97 @@ const TraceHistory = () => {
     // Add more columns as per your trace history data structure
   ];
 
+  const columnsCollectibles: ColumnDef<any>[] = [
+    {
+      accessorKey: "artist",
+      header: "Artist",
+      css: { width: "40%" },
+    },
+    { accessorKey: "title", header: "Title" },
+    { accessorKey: "creator", header: "Creator" },
+    { accessorKey: "imageURL", header: "Image Link" },
+    // Add more columns as per your trace history data structure
+  ];
+
   return (
-    <Box
-      css={{
-        display: "flex",
-        px: "10%",
-        py: "$5xl",
-        "@sm": { px: "10%", py: "$5xl" },
-        "@md": { px: "15%", py: "$5xl" },
-      }}
-    >
-      <Container>
-        <form
-          style={{ alignSelf: "flex-start" }}
-          onSubmit={handleSubmit(onSubmit)}
+      <div>
+        <Box
+          css={{
+            display: "flex",
+            px: "10%",
+            py: "$5xl",
+            "@sm": { px: "10%", py: "$5xl" },
+            "@md": { px: "15%", py: "$5xl" },
+          }}
         >
-          <Flex
+          <Container>
+            <form
+              style={{ alignSelf: "flex-start" }}
+              onSubmit={handleSubmit(onSubmit)}
+            >
+              <Flex
+                css={{
+                  gap: "$2xl",
+                  alignItems: "flex-end",
+                }}
+              >
+                <Flex direction="column" css={{ gap: "$xxs" }}>
+                  <Text>SKU Code</Text>
+                  <TextField id="sku" {...register("sku", { required: true })} />
+                  {errors.sku && (
+                    <Text variant="metadata" color="test">
+                      SKU Code is required
+                    </Text>
+                  )}
+                </Flex>
+
+                <Button css={{ width: "400px" }} type="submit" disabled={!account}>
+                  Trace History
+                </Button>
+              </Flex>
+            </form>
+
+            {transactionError && (
+              <Text variant="metadata" color="test">
+                {transactionError}
+              </Text>
+            )}
+
+            <Table rows={traceHistory} columns={columns} />
+          </Container>
+        </Box>
+
+        <Box
             css={{
-              gap: "$2xl",
-              alignItems: "flex-end",
+              display: "flex",
+              px: "10%",
+              py: "$5xl",
+              "@sm": { px: "10%", py: "$5xl" },
+              "@md": { px: "15%", py: "$5xl" },
             }}
-          >
-            <Flex direction="column" css={{ gap: "$xxs" }}>
-              <Text>SKU Code</Text>
-              <TextField id="sku" {...register("sku", { required: true })} />
-              {errors.sku && (
-                <Text variant="metadata" color="test">
-                  SKU Code is required
-                </Text>
-              )}
-            </Flex>
+        >
+          <Container>
+            <form
+                style={{ alignSelf: "flex-start" }}
+                onSubmit={handleSubmit(onSubmit2)}
+            >
+              <Flex
+                  css={{
+                    gap: "$2xl",
+                    alignItems: "flex-end",
+                  }}
+              >
 
-            <Button css={{ width: "400px" }} type="submit" disabled={!account}>
-              Trace History
-            </Button>
-          </Flex>
-        </form>
+                <Button css={{ width: "400px" }} type="submit">
+                  Party collectibles
+                </Button>
+              </Flex>
+            </form>
 
-        {transactionError && (
-          <Text variant="metadata" color="test">
-            {transactionError}
-          </Text>
-        )}
-
-        <Table rows={traceHistory} columns={columns} />
-      </Container>
-    </Box>
+            <Table rows={partyCollectibles} columns={columnsCollectibles} />
+          </Container>
+        </Box>
+      </div>
   );
 };
 
